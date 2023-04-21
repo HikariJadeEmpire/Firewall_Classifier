@@ -58,6 +58,11 @@ Action : คือผลลัพธ์การตัดสินใจขอ�
 x = df.drop( columns = ['Action'] )
 Y = df.loc[ :, [ "Action" ] ]
 
+# Prepare X By Feature Scaling
+
+x_fs = df.drop(columns=['Action'])
+x_fs.iloc[ :,4: ] = x_fs.iloc[ :,4: ].apply( lambda x : ( x-x.min() )/( x.max()-x.min() ) )
+
 ```
 
 จากนั้น เราก็ทำการ **Encoding** Y ตาม Code ด้านล่าง :
@@ -120,7 +125,7 @@ from sklearn.neighbors import KNeighborsClassifier
 for i in range(1,6) :
     knn = KNeighborsClassifier( n_neighbors = i )
 
-    scores_1 = cross_val_score(knn, x, y, cv = k_folds)
+    scores_1 = cross_val_score(knn, x_fs, y, cv = k_folds)
 
     print(f"KNN CV TEST at n_neighbors : {i}")
     print("Cross Validation Scores : ", scores_1)
