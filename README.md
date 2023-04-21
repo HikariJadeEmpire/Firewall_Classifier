@@ -135,9 +135,59 @@ the Best Output :
 
 ซึ่งผลลัพธ์ที่ได้ จะเป็น Accuracy score จากการ Train model เบื้องต้น โดยเราจะประเมินเพื่อเลือกใช้ Model ที่มีคะแนน CV score โดยเฉลี่ยสูงที่สุด <br>
 
-จากการทดสอบดังกล่าว เราตัดสินใจเลือก Machine Learning Model ที่มีชื่อว่า Decision Tree
+จากการทดสอบดังกล่าว เราตัดสินใจเลือก Machine Learning Model ที่มีชื่อว่า ***Decision Tree***
 
 #
 
 **STEP 3** : Test
 
+เริ่มด้วยการแบ่ง Train & Test
+
+```ruby
+
+# Train & Test Split
+
+X_train, X_test, y_train, y_test = train_test_split( x, y, test_size = 0.20, random_state = 42 )
+
+```
+แล้วนำไปผ่านกระบวนการ Decision Tree ตามที่ได้เคยทำกับวิธีการ Cross Validation <br>
+
+ซึ่งสำหรับ Decision Tree การพิจารณาเพิ่มเติมเกี่ยวกับ Depth หรือชั้นความลึก ของต้นไม้ เพื่อหาความแม่นยำของ Model ที่ดีที่สุด ก็เป็นหนึ่งในวิธีที่เราทำถัดมาหลังจากที่ได้ Model <br>
+ซึ่งสามารถ Plot กราฟออกมาได้ ดังนี้ : 
+
+![output](https://user-images.githubusercontent.com/118663358/233549517-d2297835-74c4-47b5-bf0b-a42c9f2de392.png)
+
+
+จากนั้นเราก็ทำการ Predict ผลลัพธ์
+
+```ruby
+
+# Predict y
+
+classifier = tree.DecisionTreeClassifier( criterion = 'gini', max_depth = 8 )
+classifier.fit(X_train, y_train)
+y_pred = classifier.predict(X_test)
+
+print(f" F1 Score : {f1_score(y_test, y_pred, average = 'macro')} ")
+
+```
+Output :
+
+> F1 Score : 0.9762997369548366
+
+ก็จะได้คะแนนสุดท้ายออกมา ที่ราวๆ 97.63 คะแนน
+
+ซึ่งสามารถ Plot แผนภาพต้นไม้ออกมาได้ดังนี้ : 
+
+![output2](https://user-images.githubusercontent.com/118663358/233551655-7a6c2796-3588-4b96-b8d3-387ceabeb8a9.png)
+
+
+จากนั้นเราก็สามารถ Plot ออกมาเป็น ROC Curve เพื่อดูคะแนนโดยรวมได้ ก็จะได้ออกมาดังภาพด้านล่าง : 
+
+![output3](https://user-images.githubusercontent.com/118663358/233550639-76e0cd53-04c5-4e76-858e-fe50b8b0d3ef.png)
+
+# CONCLUSION
+
+โดยสรุปแล้ว จาก <a href="https://github.com/HikariJadeEmpire/Firewall_Classifier/blob/main/Paper.pdf">PAPER</a> เราสามารถทำคะแนน ( F1 score ) ได้มากกว่า <br>
+จากการเปลี่ยน Model
+ซึ่งก็คือ **Decision Tree** โดยคะแนนจะอยู่ที่ราวๆ 97.63 คะแนน
