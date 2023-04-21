@@ -189,7 +189,15 @@ Output :
 
 ![output3](https://user-images.githubusercontent.com/118663358/233550639-76e0cd53-04c5-4e76-858e-fe50b8b0d3ef.png)
 
+**NOTE**
+- class 0 : 'allow'
+- class 1 : 'deny'
+- class 2 : 'drop'
+- class 3 : 'reset-both'
+<br>
+
 # CONCLUSION
+
 
 โดยสรุปแล้ว จาก <a href="https://github.com/HikariJadeEmpire/Firewall_Classifier/blob/main/Paper.pdf">PAPER</a> เราสามารถทำคะแนน ( F1 score ) ได้มากกว่า <br>
 จากการเปลี่ยน Model
