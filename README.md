@@ -131,6 +131,7 @@ the Best Output :
 > Cross Validation Scores :  [0.99458305 0.99389639 0.99298031 0.99267511 0.99221731] <br>
 > Average CV Score :  0.9932704337030602 <br>
 > Number of CV Scores used in Average :  5 <br>
+<br>
 
 ซึ่งผลลัพธ์ที่ได้ จะเป็น Accuracy score จากการ Train model เบื้องต้น โดยเราจะประเมินเพื่อเลือกใช้ Model ที่มีคะแนน CV score โดยเฉลี่ยสูงที่สุด <br>
 
