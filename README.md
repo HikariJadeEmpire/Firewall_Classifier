@@ -134,9 +134,9 @@ for i in range(1,6) :
 
 ```
 the Best Output :
-> KNN CV TEST at n_neighbors : 3 <br>
-> Cross Validation Scores :  [0.99420157 0.99351492 0.992141   0.99076759 0.99000458] <br>
-> Average CV Score :  0.9921259313827655 <br>
+> KNN CV TEST at n_neighbors : 5 <br>
+> Cross Validation Scores :  [0.99412528 0.99320974 0.99282771 0.99008088 0.99046238] <br>
+> Average CV Score :  0.9921411973903277 <br>
 > Number of CV Scores used in Average :  5 <br>
 <br>
 
